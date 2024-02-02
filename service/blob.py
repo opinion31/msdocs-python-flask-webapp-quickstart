@@ -7,7 +7,7 @@ account_name = "cxpnetworkteststorage"
 account_key = "uTEPQVdrJgNFBW4Cx30ZXlAXCyW3rKHPE6LnrMG/G7e/s/UJIadtTiB6PJBNvJ8yD/OxZRmzDxOl+AStHu/rtg=="
 container_name = "pdf"
 
-blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
+#blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
 
 
 def save_blob_from_sas(blob_sas_url, destination_file_path):
@@ -21,6 +21,7 @@ def save_blob_from_sas(blob_sas_url, destination_file_path):
         my_blob.write(download_stream.readall())
 
 def getBlobList(container):
+    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
     container_client = blob_service_client.get_container_client(container)
     resultList = container_client.list_blobs()
     blobnameList = []
@@ -29,6 +30,7 @@ def getBlobList(container):
     return blobnameList
 
 def upload_file_to_blob(stream, container_name, blob_name):
+    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
     # ContainerClient를 생성합니다.
     container_client = blob_service_client.get_container_client(container_name)
     print(blob_name)
@@ -63,6 +65,7 @@ def generate_blob_sas_url(container_name, blob_name):
     return blob_sas_url
 
 def download_blob(container,blob_name):
+    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
     container_client = blob_service_client.get_container_client(container)
     blob_client = container_client.get_blob_client(blob_name)
     download_stream = blob_client.download_blob()
