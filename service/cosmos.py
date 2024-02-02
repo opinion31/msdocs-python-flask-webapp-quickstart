@@ -7,13 +7,13 @@ endpoint = "https://networktestcosmos.documents.azure.com:443/"
 key = "YIVMHcMc8TpTE1N9AWtPrAorviKHIcYmG3eFBBSOK8aNKcCn6TQ8fQXFAj5G564GavN06H1yH0u4ACDbjB7nKg=="
 
 # Cosmos DB 클라이언트 생성
-client = CosmosClient(endpoint, key)
 
 # 데이터베이스 및 컨테이너 정보
 database_name = "main"
 
 
 def getCosmosList(container_name):
+    client = CosmosClient(endpoint, key)
     database = client.get_database_client(database_name)
     container = database.get_container_client(container_name)
     query = "Select * from c"
@@ -21,6 +21,7 @@ def getCosmosList(container_name):
     return items
 
 def writeCosmos(container_name,writeData):
+    client = CosmosClient(endpoint, key)
     database = client.get_database_client(database_name)
     writeData['pk'] = str(uuid.uuid4())
     writeData['id'] = writeData['pk']
