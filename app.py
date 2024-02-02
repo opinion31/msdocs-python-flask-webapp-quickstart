@@ -32,16 +32,14 @@ def hello():
 
 @app.route('/cosmos/get', methods=['GET'])
 def getCosmosData():
-    return "A"
-    '''
+
     container = "cxp-list"
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
-'''
+
 @app.route('/cosmos/write',methods=['POST'])
 def setCosmosData():
-    return "A"
-'''
+
     container = "cxp-list"
     writeDict = {}
     writeDict['name'] = request.form.get('name')
@@ -51,7 +49,7 @@ def setCosmosData():
     time.sleep(1)
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
-'''
+
 @app.route('/blob/get',methods=['GET'])
 def getblobData():
     container = "network"
