@@ -20,8 +20,11 @@ def save_blob_from_sas(blob_sas_url, destination_file_path):
 
 def getBlobList(container):
     container_client = blob_service_client.get_container_client(container)
-    resultList = container_client.list_blob_names()
-    return resultList
+    resultList = container_client.list_blobs()
+    blobnameList = []
+    for result in resultList :
+        blobnameList.append(result.name)
+    return blobnameList
 
 def upload_file_to_blob(stream, container_name, blob_name):
     # BlobServiceClient를 생성합니다.
