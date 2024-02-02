@@ -71,7 +71,7 @@ def uploadBlob():
 @app.route('/blob/download',methods=['POST'])
 def downloadBlob():
     container = "network"
-    blobname = request.get.form['blobname']
+    blobname = request.form.get('blobname')
     file_stream = download_blob(container,blobname)
     return send_file(file_stream, as_attachment=True, download_name=blobname)
 

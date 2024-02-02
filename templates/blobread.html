@@ -28,6 +28,20 @@
                   </div>            
               </div>
           </form>
+          <br><br>
+          <form method="post" action="{{url_for('downloadBlob')}}">
+            <div class="col-md-6 mx-auto text-center">
+                <label for="name" class="form-label fw-bold fs-5">Blob 이름으로 파일 다운로드</label>
+
+                <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+                    <input type="text" class="form-control" id="blobname" name="blobname" style="max-width: 256px;">
+                  </div>            
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
+                  <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">다운로드</button>
+                </div>            
+            </div>
+        </form>
             <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg px-4 gap-3">Back home</a>
           </div>
      </main>      
