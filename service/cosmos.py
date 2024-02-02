@@ -3,7 +3,7 @@ import uuid
 
 # Cosmos DB 계정 연결 문자열
 endpoint = "https://networktestcosmos.documents.azure.com:443/"
-key = "YIVMHcMc8TpTE1N9AWtPrAorviKHIcYmG3eFBBSOK8aNKcCn6TQ8fQXFAj5G564GavN06H1yH0u4ACDbjB7nKg"
+key = "YIVMHcMc8TpTE1N9AWtPrAorviKHIcYmG3eFBBSOK8aNKcCn6TQ8fQXFAj5G564GavN06H1yH0u4ACDbjB7nKg=="
 
 # Cosmos DB 클라이언트 생성
 client = CosmosClient(endpoint, key)
