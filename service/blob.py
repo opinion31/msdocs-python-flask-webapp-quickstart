@@ -29,18 +29,14 @@ def getBlobList(container):
     return blobnameList
 
 def upload_file_to_blob(stream, container_name, blob_name):
-    # BlobServiceClient를 생성합니다.
-    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
-
     # ContainerClient를 생성합니다.
     container_client = blob_service_client.get_container_client(container_name)
-
     print(blob_name)
     logging.debug(blob_name)
 
     # BlobClient를 생성하여 로컬 파일을 Blob에 업로드합니다.
     blob_client = container_client.get_blob_client(blob_name)
-    blob_client.upload_blob(io.BytesIO(stream),overwrite=True)
+    blob_client.upload_blob(stream.read(),overwrite=True)
 
     return "A"
 
