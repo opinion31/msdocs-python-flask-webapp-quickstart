@@ -1,6 +1,8 @@
 import os
 from service.blob import *
 from service.cosmos import *
+from datetime import datetime
+import time
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
@@ -34,5 +36,16 @@ def getCosmosData():
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
 
+@app.route('/cosmos/write',methods=['POST'])
+def setCosmosData():
+    container = "cxp-list"
+    writeDict = {}
+    writeDict['name'] = request.form.get('name')
+    writeDict['message'] = request.form.get('message')
+    writeDict['Date'] = datetime.now().strftime("%Y-%m-%d")
+    writeCosmos(writeDict)
+    time.sleep(1000)
+    resultlist = getCosmosList(container)
+    return render_template('cosmosread.html',list = resultlist)
 if __name__ == '__main__':
    app.run()
