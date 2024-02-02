@@ -44,7 +44,7 @@ def setCosmosData():
     writeDict['message'] = request.form.get('message')
     writeDict['Date'] = datetime.now().strftime("%Y-%m-%d")
     writeCosmos(writeDict)
-    time.sleep(1000)
+    time.sleep(1)
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
 if __name__ == '__main__':
