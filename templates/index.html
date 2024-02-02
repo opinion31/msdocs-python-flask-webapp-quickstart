@@ -13,10 +13,10 @@
             <h1 class="display-6 fw-bold text-primary">나는 네트워크 테스트 중이다</h1>            
           </div>
         <a href="{{url_for('getCosmosData')}}">
-          <button>코스모스 연결 테스트</button>
+          <button class="btn">코스모스 연결 테스트</button>
         </a>
-        <a href="{{url_for('getCosmosData')}}">
-          <button>Blob 연결 테스트</button>
+        <a href="{{url_for('getblobData')}}">
+          <button class="btn">Blob 연결 테스트</button>
         </a>
         <form method="post" action="{{url_for('hello')}}">
             <div class="col-md-6 mx-auto text-center">
