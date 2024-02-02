@@ -1,9 +1,12 @@
 from azure.storage.blob import BlobServiceClient, BlobClient, BlobSasPermissions, generate_blob_sas
 from datetime import datetime, timedelta
 
-account_name = "hwptopdf";
-account_key = "OcXMtofaqHQpDo4AtQikBGA5tngoODEGvLPzbWEbdtDIHigm9Sx+NUX38E/TMu0F9zIzukGKXTC2+AStBrfSnQ==";
+account_name = "cxpnetworkteststorage"
+account_key = "uTEPQVdrJgNFBW4Cx30ZXlAXCyW3rKHPE6LnrMG/G7e/s/UJIadtTiB6PJBNvJ8yD/OxZRmzDxOl+AStHu/rtg=="
 container_name = "pdf"
+
+blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
+
 
 def save_blob_from_sas(blob_sas_url, destination_file_path):
 
@@ -15,8 +18,12 @@ def save_blob_from_sas(blob_sas_url, destination_file_path):
         download_stream = blob_client.download_blob()
         my_blob.write(download_stream.readall())
 
+def getBlobList(container):
+    container_client = blob_service_client.get_container_client(container)
+    resultList = container_client.list_blob_names()
+    return resultList
 
-def upload_file_to_blob(local_file_path, container_name, blob_name):
+def upload_file_to_blob(stream, container_name, blob_name):
     # BlobServiceClient를 생성합니다.
     blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
 
@@ -24,9 +31,8 @@ def upload_file_to_blob(local_file_path, container_name, blob_name):
     container_client = blob_service_client.get_container_client(container_name)
 
     # BlobClient를 생성하여 로컬 파일을 Blob에 업로드합니다.
-    with open(local_file_path, "rb") as data:
-        blob_client = container_client.get_blob_client(blob_name)
-        blob_client.upload_blob(data,overwrite=True)
+    blob_client = container_client.get_blob_client(blob_name)
+    blob_client.upload_blob(stream,overwrite=True)
 
 def generate_blob_sas_url(container_name, blob_name):
     # BlobServiceClient를 생성합니다.
@@ -49,3 +55,9 @@ def generate_blob_sas_url(container_name, blob_name):
     blob_sas_url = f"https://{blob_client.account_name}.blob.core.windows.net/{blob_client.container_name}/{blob_client.blob_name}?{sas_token}"
 
     return blob_sas_url
+
+def download_blob(container,blob_name):
+    container_client = blob_service_client.get_container_client(container)
+    blob_client = container_client.get_blob_client(blob_name)
+    download_stream = blob_client.download_blob()
+    return download_stream

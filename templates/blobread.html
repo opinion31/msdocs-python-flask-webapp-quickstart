@@ -1,0 +1,35 @@
+<!doctype html>
+<head>
+    <title>Hello Azure - Python Quickstart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<html>
+   <body>
+     <main>
+        <div class="px-4 py-3 my-2 text-center">
+            <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="Azure Logo" width="192" height="192"/>
+            <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+            <h1 class="display-6 fw-bold">Blob 연결 테스트</h1>
+            <p class="fs-5">
+                Blob의 데이터 : {{list}}
+            </p><br>
+            <p class="fs-5">Blob에 파일 업로드해보기</p>
+            <form method="post" action="{{url_for('uploadBlob')}}">
+              <div class="col-md-6 mx-auto text-center">
+                  <label for="name" class="form-label fw-bold fs-5">파일을 다음 폼에 업로드해서 Blob에 업로드</label>
+  
+                  <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
+                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+                      <input type="file" class="form-control" id="File" name="File" style="max-width: 256px;">
+                    </div>            
+                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">업로드</button>
+                  </div>            
+              </div>
+          </form>
+            <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg px-4 gap-3">Back home</a>
+          </div>
+     </main>      
+   </body>
+</html>

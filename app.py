@@ -4,7 +4,7 @@ from service.cosmos import *
 from datetime import datetime
 import time
 from flask import (Flask, redirect, render_template, request,
-                   send_from_directory, url_for)
+                   send_from_directory, url_for,send_file)
 
 app = Flask(__name__)
 
@@ -47,5 +47,33 @@ def setCosmosData():
     time.sleep(1)
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
+
+@app.route('/blob/get',methods=['GET'])
+def getblobData():
+    container = "network"
+    resultlist = getBlobList(container)
+    return render_template('blobread.html',list = resultlist)
+
+@app.route('/blob/upload',methods=['POST'])
+def uploadBlob():
+    fileList = request.files.getlist('File')
+    container = "network"
+    for file in fileList :
+        upload_file_to_blob(file,container,file.name)
+    time.sleep(2)
+    resultlist = getBlobList(container)
+    return render_template('blobread.html',list = resultlist)
+
+@app.route('/blob/download',methods=['POST'])
+def downloadBlob():
+    container = "network"
+    blobname = request.get.form['blobname']
+    file_stream = download_blob(container,blobname)
+    return send_file(file_stream, as_attachment=True, download_name=blobname)
+
+@app.route('/blob/sas',methods=['GET'])
+def getSASUrl():
+    return "Y"
+
 if __name__ == '__main__':
    app.run()
