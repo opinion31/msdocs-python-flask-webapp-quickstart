@@ -1,6 +1,7 @@
 from azure.cosmos import CosmosClient
 import uuid
 
+'''
 # Cosmos DB 계정 연결 문자열
 endpoint = "https://networktestcosmos.documents.azure.com:443/"
 key = "YIVMHcMc8TpTE1N9AWtPrAorviKHIcYmG3eFBBSOK8aNKcCn6TQ8fQXFAj5G564GavN06H1yH0u4ACDbjB7nKg=="
@@ -25,3 +26,4 @@ def writeCosmos(container_name,writeData):
     container = database.get_container_client(container_name)
     container.create_item(body=writeData)
     return "N"
+    '''

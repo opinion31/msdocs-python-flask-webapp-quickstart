@@ -29,15 +29,19 @@ def hello():
    else:
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
-   
+
 @app.route('/cosmos/get', methods=['GET'])
 def getCosmosData():
+    return "A"
+    '''
     container = "cxp-list"
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
-
+'''
 @app.route('/cosmos/write',methods=['POST'])
 def setCosmosData():
+    return "A"
+'''
     container = "cxp-list"
     writeDict = {}
     writeDict['name'] = request.form.get('name')
@@ -47,7 +51,7 @@ def setCosmosData():
     time.sleep(1)
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
-
+'''
 @app.route('/blob/get',methods=['GET'])
 def getblobData():
     container = "network"
@@ -59,7 +63,7 @@ def uploadBlob():
     fileList = request.files.getlist('File')
     container = "network"
     for file in fileList :
-        upload_file_to_blob(file,container,file.name)
+        upload_file_to_blob(file,container,file.filename)
     time.sleep(2)
     resultlist = getBlobList(container)
     return render_template('blobread.html',list = resultlist)

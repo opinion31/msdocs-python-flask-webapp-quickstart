@@ -15,7 +15,7 @@
                 Blob의 데이터 : {{list}}
             </p><br>
             <p class="fs-5">Blob에 파일 업로드해보기</p>
-            <form method="post" action="{{url_for('uploadBlob')}}">
+            <form method="post" action="{{url_for('uploadBlob')}}" enctype="multipart/form-data">
               <div class="col-md-6 mx-auto text-center">
                   <label for="name" class="form-label fw-bold fs-5">파일을 다음 폼에 업로드해서 Blob에 업로드</label>
   
