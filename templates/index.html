@@ -12,6 +12,9 @@
             <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
             <h1 class="display-6 fw-bold text-primary">나는 네트워크 테스트 중이다</h1>            
           </div>
+        <a href="{{url_for('getCosmosData')}}">
+          <button>코스모스 연결 테스트</button>
+        </a>
         <form method="post" action="{{url_for('hello')}}">
             <div class="col-md-6 mx-auto text-center">
                 <label for="name" class="form-label fw-bold fs-5">Could you please tell me your name?</label>

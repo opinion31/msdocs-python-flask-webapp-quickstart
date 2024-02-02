@@ -1,5 +1,6 @@
 import os
-
+from service.blob import *
+from service.cosmos import *
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
@@ -26,7 +27,12 @@ def hello():
    else:
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
-
+   
+@app.route('cosmos/get', methons=['GET'])
+def getCosmosData():
+    container = "cxp-list"
+    resultlist = getCosmosList(container)
+    return render_template('cosmosread.html',list = resultlist)
 
 if __name__ == '__main__':
    app.run()
