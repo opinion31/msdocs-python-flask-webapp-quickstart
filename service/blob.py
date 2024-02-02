@@ -1,5 +1,6 @@
 from azure.storage.blob import BlobServiceClient, BlobClient, BlobSasPermissions, generate_blob_sas
 from datetime import datetime, timedelta
+import io
 
 account_name = "cxpnetworkteststorage"
 account_key = "uTEPQVdrJgNFBW4Cx30ZXlAXCyW3rKHPE6LnrMG/G7e/s/UJIadtTiB6PJBNvJ8yD/OxZRmzDxOl+AStHu/rtg=="
@@ -33,9 +34,11 @@ def upload_file_to_blob(stream, container_name, blob_name):
     # ContainerClient를 생성합니다.
     container_client = blob_service_client.get_container_client(container_name)
 
+    print(blob_name)
+
     # BlobClient를 생성하여 로컬 파일을 Blob에 업로드합니다.
     blob_client = container_client.get_blob_client(blob_name)
-    blob_client.upload_blob(stream,overwrite=True)
+    blob_client.upload_blob(io.BytesIO(stream),overwrite=True)
 
 def generate_blob_sas_url(container_name, blob_name):
     # BlobServiceClient를 생성합니다.
