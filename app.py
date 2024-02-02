@@ -28,7 +28,7 @@ def hello():
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
    
-@app.route('cosmos/get', methons=['GET'])
+@app.route('cosmos/get', methods=['GET'])
 def getCosmosData():
     container = "cxp-list"
     resultlist = getCosmosList(container)
