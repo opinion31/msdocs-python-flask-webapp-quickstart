@@ -23,5 +23,5 @@ def writeCosmos(container_name,writeData):
     writeData['pk'] = uuid.uuid4()
     writeData['id'] = writeData['pk']
     container = database.get_container_client(container_name)
-    container.create_item(item=writeData)
+    container.create_item(body=writeData)
     return "N"
