@@ -5,7 +5,7 @@ import io
 import logging
 
 account_name = "networkteststorage"
-account_key = "uTEPQVdrJgNFBW4Cx30ZXlAXCyW3rKHPE6LnrMG/G7e/s/UJIadtTiB6PJBNvJ8yD/OxZRmzDxOl+AStHu/rtg=="
+# account_key = "uTEPQVdrJgNFBW4Cx30ZXlAXCyW3rKHPE6LnrMG/G7e/s/UJIadtTiB6PJBNvJ8yD/OxZRmzDxOl+AStHu/rtg=="
 container_name = "pdf"
 
 #blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
