@@ -4,7 +4,7 @@ import uuid
 
 # Cosmos DB 계정 연결 문자열
 endpoint = "https://dev-ai-krc-cosmos.documents.azure.com:443/"
-# key = "M1a3s4WV3i2j5c82hvuz6TXyxgfYkVI3xDS2KT4O2LCdIPTFUUhUznW0nxW754Q5CbzyeLohn4ZkACDbDrrYQg=="
+key = "M1a3s4WV3i2j5c82hvuz6TXyxgfYkVI3xDS2KT4O2LCdIPTFUUhUznW0nxW754Q5CbzyeLohn4ZkACDbDrrYQg=="
 
 # Cosmos DB 클라이언트 생성
 
