@@ -31,5 +31,6 @@
         ".vscode{,/**}"
     ],
     "appService.defaultWebAppToDeploy": "/subscriptions/fcc01e5f-02db-402a-a8d3-208799c22ae8/resourceGroups/artie_test/providers/Microsoft.Web/sites/cxpnetworktest",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "azureAutomation.directory.basePath": "c:\\Users\\opini"
 }

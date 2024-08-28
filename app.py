@@ -33,7 +33,7 @@ def hello():
 @app.route('/cosmos/get', methods=['GET'])
 def getCosmosData():
 
-    container = "cxp-list"
+    container = "nhbank-dev"
     resultlist = getCosmosList(container)
     return render_template('cosmosread.html',list = resultlist)
 
