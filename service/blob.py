@@ -7,6 +7,7 @@ import logging
 account_name = "networkteststorage"
 account_key = "NaayOJYIcUS9FIE3vE1NYE01ntC0znOI7KCACEGrT7m4nypX27pmFVHiBy/BTSDWr/Mi4of3Cq50+AStjXsiQA=="
 container_name = "pdf"
+credential = DefaultAzureCredential()
 
 #blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
 
@@ -22,7 +23,7 @@ def save_blob_from_sas(blob_sas_url, destination_file_path):
 
 def getBlobList(container):
 
-    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
+    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=credential)
     container_client = blob_service_client.get_container_client(container)
     resultList = container_client.list_blobs()
     blobnameList = []
@@ -31,7 +32,7 @@ def getBlobList(container):
     return blobnameList
 
 def upload_file_to_blob(stream, container_name, blob_name):
-    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
+    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=credential)
     # ContainerClient를 생성합니다.
     container_client = blob_service_client.get_container_client(container_name)
     print(blob_name)
