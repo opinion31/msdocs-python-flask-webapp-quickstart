@@ -21,7 +21,6 @@ def save_blob_from_sas(blob_sas_url, destination_file_path):
         my_blob.write(download_stream.readall())
 
 def getBlobList(container):
-    credential = DefaultAzureCredential()
 
     blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
     container_client = blob_service_client.get_container_client(container)
@@ -32,7 +31,7 @@ def getBlobList(container):
     return blobnameList
 
 def upload_file_to_blob(stream, container_name, blob_name):
-    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=credential)
+    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
     # ContainerClient를 생성합니다.
     container_client = blob_service_client.get_container_client(container_name)
     print(blob_name)

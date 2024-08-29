@@ -3,8 +3,8 @@ import uuid
 
 
 # Cosmos DB 계정 연결 문자열
-endpoint = "https://dsev-ai-krc-cosmos.documents.azure.com:443/"
-key = "M1a3s4WV3i2j5c82hvuz6TXyxgfYkVI3xDS2KT4O2LCdIPTFUUhUznW0nxW754Q5CbzyeLohn4ZkACDbDrrYQg=="
+endpoint = "https://networktestcosmos.documents.azure.com:443/"
+key = "YIVMHcMc8TpTE1N9AWtPrAorviKHIcYmG3eFBBSOK8aNKcCn6TQ8fQXFAj5G564GavN06H1yH0u4ACDbjB7nKg=="
 
 # Cosmos DB 클라이언트 생성
 
