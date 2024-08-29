@@ -5,12 +5,10 @@ import io
 import logging
 
 account_name = "networkteststorage"
-# account_key = "uTEPQVdrJgNFBW4Cx30ZXlAXCyW3rKHPE6LnrMG/G7e/s/UJIadtTiB6PJBNvJ8yD/OxZRmzDxOl+AStHu/rtg=="
+account_key = "NaayOJYIcUS9FIE3vE1NYE01ntC0znOI7KCACEGrT7m4nypX27pmFVHiBy/BTSDWr/Mi4of3Cq50+AStjXsiQA=="
 container_name = "pdf"
 
 #blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
-credential = DefaultAzureCredential()
-
 
 def save_blob_from_sas(blob_sas_url, destination_file_path):
 
@@ -25,7 +23,7 @@ def save_blob_from_sas(blob_sas_url, destination_file_path):
 def getBlobList(container):
     credential = DefaultAzureCredential()
 
-    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=credential)
+    blob_service_client = BlobServiceClient(account_url=f"https://{account_name}.blob.core.windows.net", credential=account_key)
     container_client = blob_service_client.get_container_client(container)
     resultList = container_client.list_blobs()
     blobnameList = []
