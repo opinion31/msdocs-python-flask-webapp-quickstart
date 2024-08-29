@@ -5,6 +5,6 @@ azure.storage.blob
 azure-cosmos
 azure.identity
 pandas
-pycryptodo
+pycryptodome
 azure-keyvault-secrets
 azure-keyvault-keys
